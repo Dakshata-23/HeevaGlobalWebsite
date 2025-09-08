@@ -4,12 +4,19 @@ const FRAME_PATH = '/ezgif-split/ezgif-frame-';
 const FRAME_PAD = 3;
 const SCROLL_PER_FRAME = 50; // Reduced for shorter scroll distance
 import React, { useEffect, useRef, useState } from 'react';
-// Preload all frame images
+
+// Global image cache for frames
+const frameImageCache: { [key: number]: HTMLImageElement } = {};
+let framesPreloaded = false;
+
 function preloadFrames() {
+  if (framesPreloaded) return;
   for (let i = 1; i <= FRAME_COUNT; i++) {
     const img = new window.Image();
     img.src = getFrameSrc(i);
+    frameImageCache[i] = img;
   }
+  framesPreloaded = true;
 }
 
 function pad(num: number, size: number) {
