@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
 
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -9,7 +13,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8">
           {/* Logo & Description */}
           <div className="md:col-span-2">
-            <Link to="/" className="flex items-center space-x-2 mb-4">
+            <Link to="/" className="flex items-center space-x-2 mb-4" onClick={scrollToTop}>
               <div className="w-8 h-8 bg-terminal-green rounded flex items-center justify-center">
                 <span className="text-background font-bold">T</span>
               </div>
@@ -25,7 +29,7 @@ const Footer = () => {
             <h3 className="text-foreground font-semibold mb-4">Company</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/about" className="text-terminal-gray hover:text-terminal-green transition-terminal text-sm">
+                <Link to="/about" className="text-terminal-gray hover:text-terminal-green transition-terminal text-sm" onClick={scrollToTop}>
                   About
                 </Link>
               </li>
@@ -37,12 +41,12 @@ const Footer = () => {
             <h3 className="text-foreground font-semibold mb-4">Contact</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/contact" className="text-terminal-gray hover:text-terminal-green transition-terminal text-sm">
+                <Link to="/contact" className="text-terminal-gray hover:text-terminal-green transition-terminal text-sm" onClick={scrollToTop}>
                   Get in Touch
                 </Link>
               </li>
               <li>
-                <Link to="/system" className="text-terminal-gray hover:text-terminal-green transition-terminal text-sm">
+                <Link to="/services" className="text-terminal-gray hover:text-terminal-green transition-terminal text-sm" onClick={scrollToTop}>
                   Our Services
                 </Link>
               </li> 

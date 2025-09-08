@@ -18,6 +18,10 @@ const Navigation = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-terminal-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -39,6 +43,7 @@ const Navigation = () => {
                 className={`text-sm font-medium transition-terminal hover:text-terminal-green ${
                   isActive(item.path) ? "text-terminal-green" : "text-foreground"
                 }`}
+                onClick={scrollToTop}
               >
                 {item.name}
               </Link>
@@ -66,7 +71,10 @@ const Navigation = () => {
                 <Link
                   key={item.name}
                   to={item.path}
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => {
+                    setIsOpen(false);
+                    scrollToTop();
+                  }}
                   className={`block px-3 py-2 text-base font-medium rounded-md transition-terminal hover:text-terminal-green hover:bg-secondary ${
                     isActive(item.path) ? "text-terminal-green bg-secondary" : "text-foreground"
                   }`}
