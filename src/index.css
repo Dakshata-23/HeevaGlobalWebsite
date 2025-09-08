@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Terminal Industries Design System - Dark, Modern, Tech-focused */
+
+@layer base {
+  :root {
+    /* Terminal Dark Theme */
+    --background: 0 0% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
+
+    /* Terminal Green Accent */
+    --primary: 120 100% 50%;
+    --primary-foreground: 0 0% 8%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 120 100% 50%;
+    --accent-foreground: 0 0% 8%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 120 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom Terminal Colors */
+    --terminal-green: 120 100% 50%;
+    --terminal-green-dim: 120 60% 40%;
+    --terminal-dark: 0 0% 8%;
+    --terminal-darker: 0 0% 5%;
+    --terminal-light: 0 0% 95%;
+    --terminal-gray: 0 0% 40%;
+    --terminal-border: 0 0% 20%;
+
+    /* Typography scale */
+    --font-heading: 'Inter', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+
+    /* Spacing scale */
+    --space-section: 6rem;
+    --space-section-mobile: 4rem;
+
+    /* Animation */
+    --animation-fast: 0.2s ease-out;
+    --animation-normal: 0.3s ease-out;
+    --animation-slow: 0.5s ease-out;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    font-family: var(--font-body);
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  /* Terminal-specific typography */
+  .text-terminal-green {
+    color: hsl(var(--terminal-green));
+  }
+
+  .text-terminal-gray {
+    color: hsl(var(--terminal-gray));
+  }
+
+  .bg-terminal-dark {
+    background-color: hsl(var(--terminal-dark));
+  }
+
+  .bg-terminal-darker {
+    background-color: hsl(var(--terminal-darker));
+  }
+
+  .border-terminal {
+    border-color: hsl(var(--terminal-border));
+  }
+
+  /* Smooth transitions */
+  .transition-terminal {
+    transition: var(--animation-normal);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--terminal-dark));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--terminal-border));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--terminal-gray));
+  }
+}
+
+/* Scroll Video Performance Optimizations */
+@layer utilities {
+  .scroll-video-optimized {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    perspective: 1000px;
+  }
+  
+  .smooth-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .smooth-scroll {
+      scroll-behavior: auto;
+    }
+    
+    .scroll-video-optimized {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    /* Improve scroll performance */
+    overscroll-behavior: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
