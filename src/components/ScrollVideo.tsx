@@ -4,6 +4,13 @@ const FRAME_PATH = '/ezgif-split/ezgif-frame-';
 const FRAME_PAD = 3;
 const SCROLL_PER_FRAME = 50; // Reduced for shorter scroll distance
 import React, { useEffect, useRef, useState } from 'react';
+// Preload all frame images
+function preloadFrames() {
+  for (let i = 1; i <= FRAME_COUNT; i++) {
+    const img = new window.Image();
+    img.src = getFrameSrc(i);
+  }
+}
 
 function pad(num: number, size: number) {
   let s = num + '';
@@ -37,7 +44,9 @@ const ScrollVideo: React.FC<ScrollVideoProps> = ({ sectionMode, onEnd, onActiveC
   }
 
   useEffect(() => {
-    if (sectionMode) {
+    // Preload all frames on mount (only once)
+    preloadFrames();
+  if (sectionMode) {
       const scrollLength = window.innerHeight * 1.2;
       const handleScroll = () => {
         if (!containerRef.current) return;
@@ -175,7 +184,7 @@ const ScrollVideo: React.FC<ScrollVideoProps> = ({ sectionMode, onEnd, onActiveC
               </div>
             </div>
             {/* Debug overlay: shows current frame */}
-            <div
+            {/*<div
               style={{
                 position: 'fixed',
                 top: 10,
@@ -189,7 +198,7 @@ const ScrollVideo: React.FC<ScrollVideoProps> = ({ sectionMode, onEnd, onActiveC
               }}
             >
               Frame: {frame}
-            </div>
+            </div>*/}
           </>
         )}
       </div>
