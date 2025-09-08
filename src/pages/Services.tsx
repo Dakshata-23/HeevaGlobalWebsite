@@ -1,4 +1,5 @@
 import Navigation from "@/components/Navigation";
+import { Helmet } from "react-helmet-async";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Plane, Ship, Boxes, FileText, Warehouse, Globe, BadgeCheck, Layers, Network, DollarSign, Settings } from "lucide-react";
@@ -69,7 +70,12 @@ const whyChoose = [
 
 const Services = () => {
   return (
-  <div className="min-h-screen bg-background relative overflow-hidden">
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      <Helmet>
+        <title>Services | Terminal Industries</title>
+        <meta name="description" content="Explore the logistics and supply chain services offered by Terminal Industries." />
+        <meta name="keywords" content="services, logistics, supply chain, terminal, freight" />
+      </Helmet>
       <Navigation />
       <main className="pt-16">
         {/* Hero Section */}

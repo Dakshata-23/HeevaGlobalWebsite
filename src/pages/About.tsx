@@ -1,4 +1,5 @@
 import Navigation from "@/components/Navigation";
+import { Helmet } from "react-helmet-async";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Target, Users, Award } from "lucide-react";
@@ -7,6 +8,11 @@ import { Link } from "react-router-dom";
 const About = () => {
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>About | Terminal Industries</title>
+        <meta name="description" content="Learn more about Terminal Industries and our mission to revolutionize logistics." />
+        <meta name="keywords" content="about, terminal, logistics, company, mission" />
+      </Helmet>
       <Navigation />
       
       <main className="pt-16">

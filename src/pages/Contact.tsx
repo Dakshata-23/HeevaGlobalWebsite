@@ -1,4 +1,5 @@
 import Navigation from "@/components/Navigation";
+import { Helmet } from "react-helmet-async";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -30,6 +31,11 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Contact | Terminal Industries</title>
+        <meta name="description" content="Contact Terminal Industries for inquiries, support, or partnership opportunities." />
+        <meta name="keywords" content="contact, terminal, logistics, support, inquiry" />
+      </Helmet>
       <Navigation />
       
       <main className="pt-16">
